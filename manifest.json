@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Spoiler Blocker",
-  "description": "Blocks your most annoying spoilers.",
+  "name": "AI Spoiler Blocker",
+  "description": "Blocks your most annoying spoilers using AI.",
   "version": "1.0",
   "permissions": ["storage"],
   "action": {
@@ -10,8 +10,9 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "matches": ["*://*.x.com/*"],
+      "js": ["content.js"],
+      "type": "module"
     }
   ]
 }

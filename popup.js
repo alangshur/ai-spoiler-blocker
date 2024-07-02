@@ -1,8 +1,36 @@
-document.getElementById('wordsSaveButton').addEventListener('click', () => {
-    const input = document.getElementById('wordsInput').value;
-    const words = input.split(',').map(word => word.trim().toLowerCase()).filter(word => word.length > 0);
+document.addEventListener('DOMContentLoaded', () => {
+    const phraseInput = document.getElementById('phraseInput');
+    const phraseSaveButton = document.getElementById('phraseSaveButton');
+    const currentPhraseSpan = document.getElementById('currentPhrase');
 
-    chrome.storage.sync.set({ blockedWords: words }, () => {
-        alert('Blocked words saved.');
+    const apiKeyInput = document.getElementById('apiKeyInput');
+    const apiKeySaveButton = document.getElementById('apiKeySaveButton');
+    const currentApiKeySpan = document.getElementById('currentApiKey');
+
+    chrome.storage.local.get(['blockedPhrase', 'openaiApiKey'], (result) => {
+        const currentPhrase = result.blockedPhrase || 'None';
+        currentPhraseSpan.textContent = currentPhrase;
+        const currentApiKey = result.openaiApiKey || 'None';
+        currentApiKeySpan.textContent = currentApiKey.slice(0, 15) + '...';
+    });
+
+    phraseSaveButton.addEventListener('click', () => {
+        const newPhrase = phraseInput.value.trim();
+        if (newPhrase) {
+            chrome.storage.local.set({ blockedPhrase: newPhrase }, () => {
+                currentPhraseSpan.textContent = newPhrase;
+                phraseInput.value = '';
+            });
+        }
+    });
+
+    apiKeySaveButton.addEventListener('click', () => {
+        const newApiKey = apiKeyInput.value.trim();
+        if (newApiKey) {
+            chrome.storage.local.set({ openaiApiKey: newApiKey }, () => {
+                currentApiKeySpan.textContent = newApiKey;
+                apiKeyInput.value = '';
+            });
+        }
     });
 });

@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Spoiler Blocker</title>
+<head>
+    <title>AI Spoiler Blocker</title>
     <link rel="stylesheet" href="popup.css">
-  </head>
-  <body>
-    <div id="title">Spoiler Blocker</div>
-    <input id="wordsInput" type="text" placeholder="Enter words to block, separated by commas">
-    <button id="wordsSaveButton">Save</button>
+</head>
+<body>
+    <div id="title">AI Spoiler Blocker</div>
+
+    <!-- phrase input -->
+    <input id="phraseInput" type="text" placeholder="Enter a phrase to block">
+    <button id="phraseSaveButton">Save Phrase</button>
+    <div id="currentPhraseContainer">
+        <strong>Current Phrase:</strong>
+        <span id="currentPhrase">None</span>
+    </div>
+    <hr>
+
+    <!-- api key input -->
+    <input id="apiKeyInput" type="text" placeholder="Enter OpenAI API key">
+    <button id="apiKeySaveButton">Save OpenAI API Key</button>
+    <div id="currentApiKeyContainer">
+        <strong>Current API Key:</strong>
+        <span id="currentApiKey">None</span>
+    </div>
+
     <script src="popup.js"></script>
-  </body>
+</body>
 </html>

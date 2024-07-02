@@ -1,39 +1,56 @@
 body {
     font-family: Arial, sans-serif;
-    padding: 5px;
     box-sizing: border-box;
-    width: 300px;
+    width: 400px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    padding: 20px;
+    background: #fff;
 }
 
 div#title {
-    font-size: 20px;
-    font-weight: 600;
-    color: #333;
+    font-size: 24px;
+    font-weight: 700;
+    color: #444;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-input#wordsInput {
+input {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
     box-sizing: border-box;
-    border-radius: 3px;
-    border-width: 1px;
-    border-color: black;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
 }
 
-button#wordsSaveButton {
+button {
     width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
+    padding: 10px;
     background-color: #4CAF50;
-    border-radius: 3px;
+    border-radius: 5px;
     color: white;
     border: none;
+    font-size: 16px;
     cursor: pointer;
 }
 
 button:hover {
     background-color: #45a049;
+}
+
+div#currentPhraseContainer,
+div#currentApiKeyContainer {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+
+hr {
+    width: 100%;
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #ccc;
 }
