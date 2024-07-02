@@ -150,9 +150,14 @@ async function processTextNode(node, blockedPhraseEmbedding, openaiApiKey) {
 async function main() {
 
     // get blocked phrase and api key from storage
-    const { blockedPhrase, openaiApiKey } = await getStorage(['blockedPhrase', 'openaiApiKey']);
+    const { extensionEnabled, blockedPhrase, openaiApiKey } = await getStorage(['extensionEnabled', 'blockedPhrase', 'openaiApiKey']);
     if (!blockedPhrase || !openaiApiKey) {
         console.error('Blocked phrase or OpenAI API key not set');
+        return;
+    }
+
+    // stop if extension is disabled
+    if (!extensionEnabled) {
         return;
     }
 
